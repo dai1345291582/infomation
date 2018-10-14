@@ -28,6 +28,11 @@ def create_app(config_name):
     CSRFProtect(app)
     Session(app)
 
+    # 防止循环导包
+    from info.modules import index_blue
+    # 注册蓝图
+    app.register_blueprint(index_blue)
+
     return app
 
 
